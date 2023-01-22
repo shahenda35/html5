@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Range</title>
+</head>
+<body>
+    <p>Red: <input type="range" value="0" step="0.1" min="0" max="" style="width: 300px;" class="Red"/> <span class="Red-bar"></span><br /></p>
+    <p>Green: <input type="range" value="0" step="0.1" min="0" max="" style="width: 300px;" class="Green"/> <span class="Green-bar"></span><br /></p>
+    <p>Blue: <input type="range" value="0" step="0.1" min="0" max="" style="width: 300px;" class="Blue"/> <span class="Blue-bar"></span><br /></p>
+
+    <script>
+        var pR = document.getElementsByTagName("p")[0];
+        var redline = document.querySelector(".Red");
+        var redline_bar = document.querySelector(".Red-bar");
+
+        var pG = document.getElementsByTagName("p")[1];
+        var greenline = document.querySelector(".Green");
+        var greenline_bar = document.querySelector(".Green-bar");
+
+        var pB = document.getElementsByTagName("p")[2];
+        var blueline = document.querySelector(".Blue");
+        var blueline_bar = document.querySelector(".Blue-bar");
+
+        redline.append(redline_bar);
+        greenline.append(greenline_bar);
+        blueline.append(blueline_bar);
+
+        redline.addEventListener("change", function(){
+                pR.style.color="red";
+        })
+
+        greenline.addEventListener("change", function(){
+                pG.style.color="green";
+        })
+
+        blueline.addEventListener("change", function(){
+                pB.style.color="blue";
+        })
+
+
+
+
+    </script>
+    
+</body>
+</html>

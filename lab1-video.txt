@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyVideo</title>
+</head>
+<body>
+    <video
+      src="./video/frozen.mp4"
+      width="300"
+      id="vid"
+      poster="./image/frozen.jpg"
+      style="display: block;"
+    >
+    </video>
+    <input type="range" value="0" step="0.1" min="0" max="" style="width: 270px;"/> <span class="range-bar"></span>
+    <div class="time" style="display: inline-flex;"></div><br>
+    <button class="play" >Play</button>
+    <button class="stop">Stop</button>
+    <button class="start"><<</button>
+    <button class="inc"><</button>
+    <button class="dec">></button>
+    <button class="end">>></button>
+    <input type="range" value="0" step="0.1" min="0" max="" style="width: 50px;" class="volume"/> <span class="volume-bar"></span><br />
+    <br>
+    <button class="mute">Mute/UnMute</button>
+    <br>
+    speed: <input type="range" value="0" step="0.1" min="0" max="" style="width: 50px;" class="speed"/> <span class="speed-bar"></span><br />
+    <button class="FullScreen">FullScreen</button>
+	
+    <script>
+
+        var vid = document.getElementById("vid");
+        var rangeline = document.querySelector("input[type=range]");
+        var rangeline_bar = document.querySelector(".range-bar");
+        var Timer = document.querySelector(".time");
+        var playbttn = document.querySelector(".play");
+        var stopbttn = document.querySelector(".stop");
+        var return_start = document.querySelector(".start");
+        var increase= document.querySelector(".inc");
+        var decrease= document.querySelector(".dec");
+        var ToEnd = document.querySelector(".end");
+        var volumeline = document.querySelector(".volume");
+        var volumeline_bar = document.querySelector(".volume-bar");
+        var mutebttn = document.querySelector(".mute");
+        var speedline = document.querySelector(".speed");
+        var speedline_bar = document.querySelector(".speed-bar");
+	var fullscreen=document.querySelector(".FullScreen");
+       
+        rangeline.append(rangeline_bar);
+        volumeline.append(volumeline_bar);
+        speedline.append(speedline_bar);
+
+        vid.addEventListener("timeupdate", function () {
+            Timer.innerHTML = Math.round(vid.duration - vid.currentTime);
+        });
+
+        playbttn.onclick=function(){
+            vid.play();
+            
+        }
+
+        stopbttn.onclick=function(){
+            vid.pause();
+            //vid.currentTime = 0;
+            rangeline.value = 0;
+        }
+
+        vid.addEventListener("timeupdate", function () {
+            rangeline.setAttribute("max" , vid.duration);
+            rangeline.value = vid.currentTime;
+            rangeline_bar.style.width = `${Math.floor(vid.currentTime * 100 / vid.duration)}%`;
+         });
+
+        return_start.onclick=function(){
+            vid.currentTime = 0;
+            rangeline.value = 0;
+        }
+
+        increase.onclick=function(){
+            vid.currentTime += 5;
+            rangeline.value += 5;
+        }
+
+        decrease.onclick=function(){
+            vid.currentTime -= 5;
+            rangeline.value -= 5;
+        }
+
+        ToEnd.onclick=function(){
+            vid.pause();
+            vid.currentTime = vid.duration
+            rangeline.value = vid.currentTime;
+            
+        }
+
+        volumeline.addEventListener("change" , function(){
+            vid.volume = this.value / 100;
+        })
+
+        mutebttn.onclick=function(){
+            vid.muted = !vid.muted;
+        }
+
+        speedline.addEventListener("change" , function(){
+             vid.defaultPlaybackRate = 0.5
+             if(vid.playbackRate>1){
+                vid.playbackRate -=1;
+             }else{
+             vid.playbackRate += 1;
+            }
+        })
+
+	 fullscreen.addEventListener("click", function(){
+            if (document.fullscreenElement !== null) {
+           
+              document.exitFullscreen();
+                 setFullscreenData(false);
+                } else {
+           
+                vid.requestFullscreen();
+                
+             }
+        })
+
+
+    </script>
+    
+</body>
+</html>

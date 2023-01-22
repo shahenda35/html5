@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triangle</title>
+</head>
+<body>
+    <svg height="300" width="500" style="margin-left: 33%;">
+        <polygon points="100,10 10,250 100,250" style="fill:rgb(10, 51, 104);stroke:rgb(3, 8, 30);stroke-width:2" />
+        <text x="127" y="155" text-anchor="middle" fill="black" font-size="30">b</text>
+        <text x="20" y="155" text-anchor="middle" fill="black" font-size="30">c</text>
+        <text x="50" y="285" text-anchor="middle" fill="black" font-size="30">a</text>
+    </svg>
+    <h1>According to Pythagoras Theorem</h1>
+    <math>
+        <mrow style="font-size: 26; font-weight:bold; color:rgb(25, 37, 205)">
+            <mi>C</mi>
+            <mo>=</mo>
+            <msqrt>
+                <msup>
+                    <mi>a</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                </msup>
+            </msqrt>
+        </mrow>
+    </math>
+    
+</body>
+</html>
